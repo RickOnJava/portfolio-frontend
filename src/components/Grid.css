@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Anta&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+.section-one {
+  background: url("laptop.png") no-repeat;
+  background-size: cover;
+  box-shadow: 0 15px 25px rgba(129, 124, 124, 0.5);
+  cursor: pointer;
+}
+.section-one:hover h2 {
+  color: rgb(187, 130, 240);
+  padding-left: 4rem;
+}
+.section-one h2 {
+  z-index: 999;
+  color: white;
+  padding-left: 3rem;
+  font-family: inter;
+  padding-bottom: 3rem;
+  font-size: 32px;
+  font-weight: 700;
+  transition: 1s;
+}
+.map-grid, .rocket-text-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1rem;
+  box-shadow: 0 15px 25px rgba(129, 124, 124, 0.2);
+  backdrop-filter: blur(14px);
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+.map-grid h1 {
+  z-index: 999;
+  color: rgb(0, 0, 0);
+  padding-left: 2rem;
+  font-family: inter;
+  font-size: 30px;
+  font-weight: 700;
+  transition: 1s;
+}
+.map-grid:hover h1 {
+  padding-left: 3rem;
+}
+.third-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  place-items: center;
+  box-shadow: 0 15px 25px rgba(129, 124, 124, 0.3);
+  border-radius: 1.5rem;
+  cursor: pointer;
+}
+.third-grid-1 {
+  grid-area: 1/1;
+  z-index: 999;
+  h1 {
+    transition: 1s;
+  }
+  p{
+    transition: 1s;
+  }
+}
+.third-grid-2 {
+  grid-area: 1/1;
+  border-radius: 1.5rem;
+}
+.third-grid:hover .third-grid-1 h1 {
+  color: rgb(187, 130, 240);
+}
+.third-grid:hover .third-grid-1 p {
+  color: rgb(255, 255, 255);
+  font-size:medium;
+}
+.skill-box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(220, 218, 218);
+  padding: 0.5rem 1rem;
+  backdrop-filter: blur(30px);
+  background-color: rgba(227, 228, 237, 0.5);
+  box-shadow: 0px 0px 30px rgba(255, 255, 255, 0.18);
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.skill-box:hover {
+  background-color: rgba(227, 228, 237, 0.1);
+  box-shadow: 0px 0px 30px rgba(255, 255, 255, 0.4);
+}
+.email-grid h1{
+  transition: 0.6s;
+}
+.email-grid:hover h1{
+  margin-top: 0.5rem;
+}
+.section-game {
+  box-shadow: 0 15px 25px rgba(129, 124, 124, 0.5);
+  cursor: pointer;
+}
+

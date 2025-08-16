@@ -1,0 +1,12 @@
+.experience-card img{
+    position: relative;
+    animation: updown 2s ease-in-out infinite;
+}
+@keyframes updown {
+    0%, 100% {
+      top: 0;
+    }
+    50% {
+      top: 10px;
+    }
+  }

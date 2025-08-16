@@ -1,0 +1,54 @@
+<div className=' bg-black-100'>
+        <div className="hero-section">
+
+   <div>
+        <Spotlight
+          className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen"
+          fill="white"
+        />
+        <Spotlight
+          className="top-10 left-full h-[80vh] w-[50vw] "
+          fill="purple"
+        />
+        <Spotlight className=" top-28 left-80 h-[80vh] w-[50vw] " fill="blue" />
+      </div>
+   <div className="particle">
+    {/* <Particles quantity={200}  size={1} color="white" vx={0.5} vy={0.5} /> */}
+    <GridPattern
+        width={50}
+        height={50}
+        x={-1}
+        y={-1}
+        className={cn(
+          "[mask-image:radial-gradient(500px_circle_at_center,white,transparent)]",
+        )}
+      />
+    </div> 
+
+
+   <div className='robot  h-[100vh] w-[100vw]'><Spline scene="https://prod.spline.design/v82N86znvEGdUJc7/scene.splinecode" /></div>
+      
+  </div>
+  </div>
+
+
+
+  <div className="flex justify-center relative my-20 z-10 ">
+        <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center">
+            <h2 className=" uppercase tracking-widest text-xs text-center text-purple-500 max-w-80 ">
+                Dynamic Web Magic with Next.js
+            </h2>
+
+            <TextGenerateEffect
+             className=" text-center text-[40px] md:text-5xl lg:text-6xl"
+             words="Transforming Concepts into Seamless User Experiences"
+            />
+
+            <p className="text-center text-white-200 md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl">
+                Hi👋, I&apos;m Rick, a Next.js Developer based in West-Bengal
+            </p>
+
+            
+            
+        </div>
+      </div>

@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Anta&family=Inter:opsz,wght@14..32,100..900&family=Playwrite+IT+Moderna:wght@100..400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.hero-section{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  place-items: center;
+  height: 100vh;
+  position: relative;
+}
+.text-grid{
+  word-spacing: 1rem;
+  font-size: 8rem;
+  grid-area: 1/1;
+  letter-spacing: 3rem;
+}
+.particle{
+  grid-area: 1/1;
+  width: 100vw;
+}
+.main-container{
+  grid-area: 1/1;
+  z-index: 1;
+}
+.name{
+  font-family: "Anta", serif;
+}
