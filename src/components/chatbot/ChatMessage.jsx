@@ -1,4 +1,4 @@
-import ChatBotIcon from "./ChatBotIcon";
+import ChatBotIcon from "./ChatbotIcon.jsx";
 
 const ChatMessage = ({ chat }) => {
   return (
