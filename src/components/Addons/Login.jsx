@@ -7,7 +7,7 @@ import { toast } from "sonner";
 import { Link, Navigate } from "react-router-dom";
 import { Loader2 } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
-import { setAuthUser, setIsAuthenticated } from "@/redux/authSlice.js";
+import { setAuthUser, setIsAuthenticated, setToken } from "@/redux/authSlice.js";
 import Spline from '@splinetool/react-spline';
 
 const Login = () => {
@@ -47,7 +47,8 @@ const Login = () => {
 
         dispatch(setIsAuthenticated(true));
         dispatch(setAuthUser(res.data.user)); // we have passed in backend the user , we get this here
-        
+        dispatch(setToken(res.data.token));
+
         toast.success(res.data.message);
         setInput({
           email: "",

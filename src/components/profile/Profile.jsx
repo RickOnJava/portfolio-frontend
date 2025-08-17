@@ -6,13 +6,10 @@ import { useEffect, useState } from "react";
 import { IoMdFemale, IoMdMale } from "react-icons/io";
 import { CiPhone } from "react-icons/ci";
 import { AiFillLike, AiOutlineLike } from "react-icons/ai";
-import {
-  Mail,
-} from "lucide-react";
+import { Mail } from "lucide-react";
 import axios from "axios";
 import { toast } from "sonner";
 import { setUserProfile } from "@/redux/authSlice";
-
 
 const Profile = () => {
   const params = useParams();
@@ -23,7 +20,9 @@ const Profile = () => {
 
   useGetUserProfile(userId);
 
-  const { userProfile, user, isAuthenticated } = useSelector((store) => store.auth);
+  const { userProfile, user, isAuthenticated, token } = useSelector(
+    (store) => store.auth
+  );
 
   const [liked, setLiked] = useState(false);
   const [userLikeCount, setUserLikeCount] = useState(
@@ -42,8 +41,15 @@ const Profile = () => {
     try {
       const action = liked ? "dislike" : "like";
       const res = await axios.get(
-        `${import.meta.env.VITE_BACKEND_URL}/api/v1/user/${userProfile?._id}/${action}`,
-        { withCredentials: true }
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/user/${
+          userProfile?._id
+        }/${action}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          withCredentials: true,
+        }
       );
 
       if (res.data.success) {
@@ -68,7 +74,7 @@ const Profile = () => {
     }
   };
 
-  if (!isAuthenticated ) {
+  if (!isAuthenticated) {
     return <Navigate to={"/login"} />;
   }
 
@@ -124,20 +130,18 @@ const Profile = () => {
                     </button>
                   </Link>
                 </>
+              ) : liked ? (
+                <AiFillLike
+                  size={"30px"}
+                  className=" cursor-pointer text-red-500"
+                  onClick={likeOrDislikeHandler}
+                />
               ) : (
-                liked ? (
-                  <AiFillLike
-                    size={"30px"}
-                    className=" cursor-pointer text-red-500"
-                    onClick={likeOrDislikeHandler}
-                  />
-                ) : (
-                  <AiOutlineLike
-                    size={"30px"}
-                    className=" cursor-pointer hover:text-gray-600 text-white-100"
-                    onClick={likeOrDislikeHandler}
-                  />
-                )
+                <AiOutlineLike
+                  size={"30px"}
+                  className=" cursor-pointer hover:text-gray-600 text-white-100"
+                  onClick={likeOrDislikeHandler}
+                />
               )}
               <button
                 className="inline-flex justify-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"

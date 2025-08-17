@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-key */
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -16,15 +16,22 @@ import { Badge } from "@/components/ui/badge";
 const UserWhoGiveLikes = ({ open, setOpen }) => {
   const [likes, setLikes] = useState([]);
 
-  const { user } = useSelector(store => store.auth);
+  const { user, token } = useSelector((store) => store.auth);
 
   const { userWhoGiveLikes } = useSelector((store) => store.post);
 
   const fetchData = async () => {
     try {
       const res = await axios.get(
-        `${import.meta.env.VITE_BACKEND_URL}/api/v1/post/${userWhoGiveLikes?._id}/likes`,
-        { withCredentials: true }
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/post/${
+          userWhoGiveLikes?._id
+        }/likes`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          withCredentials: true,
+        }
       );
       if (res.data.success) {
         setLikes(res.data.usersWhoGiveLike);
@@ -42,10 +49,11 @@ const UserWhoGiveLikes = ({ open, setOpen }) => {
   }, [userWhoGiveLikes]);
 
   return (
-    
     <Dialog open={open}>
-
-        <DialogContent onInteractOutside={() => setOpen(false)} className="max-w-[25%] max-h-[50%] py-5 backdrop-blur-2xl bg-white/20 border border-white/10 shadow-xl ">
+      <DialogContent
+        onInteractOutside={() => setOpen(false)}
+        className="max-w-[25%] max-h-[50%] py-5 backdrop-blur-2xl bg-white/20 border border-white/10 shadow-xl "
+      >
         <DialogHeader>
           <DialogTitle className="text-white-100">Likes From</DialogTitle>
           <DialogDescription>
@@ -74,9 +82,11 @@ const UserWhoGiveLikes = ({ open, setOpen }) => {
                           >
                             {like?.fullname}
                           </Link>
-                          {
-                            user && user._id === like._id && <Badge className="ml-2" variant="secondary">You</Badge>
-                          }
+                          {user && user._id === like._id && (
+                            <Badge className="ml-2" variant="secondary">
+                              You
+                            </Badge>
+                          )}
                         </h1>
                       </div>
                     </div>
@@ -87,7 +97,6 @@ const UserWhoGiveLikes = ({ open, setOpen }) => {
           </DialogDescription>
         </DialogHeader>
       </DialogContent>
-      
     </Dialog>
   );
 };

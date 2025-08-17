@@ -26,7 +26,7 @@ export default function ReviewPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [averageRating, setAverageRating] = useState(0);
 
-  const { user } = useSelector((store) => store.auth);
+  const { user, token } = useSelector((store) => store.auth);
   const { posts } = useSelector((store) => store.post);
 
   const reversedPosts = [...posts].reverse(); // show the newest post first
@@ -49,6 +49,7 @@ export default function ReviewPage() {
         { caption, rating }, // use {} as we send as json object
         {
           headers: {
+            Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
           withCredentials: true,

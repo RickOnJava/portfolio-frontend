@@ -19,7 +19,7 @@ import CommentDialog from "../review_pages/CommentDialog";
 import { Link } from "react-router-dom";
 
 export function ReviewCard({ post }) {
-  const { user } = useSelector((store) => store.auth);
+  const { user, token } = useSelector((store) => store.auth);
   const { posts } = useSelector((store) => store.post);
 
   const [open, setOpen] = useState(false); // For message
@@ -35,7 +35,12 @@ export function ReviewCard({ post }) {
     try {
       const res = await axios.delete(
         `${import.meta.env.VITE_BACKEND_URL}/api/v1/post/delete/${post?._id}`,
-        { withCredentials: true }
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          withCredentials: true,
+        }
       );
 
       if (res.data.success) {
@@ -58,15 +63,22 @@ export function ReviewCard({ post }) {
   }, [post]);
 
   useEffect(() => {
-    setComment(post?.comments)
-  }, [post])
+    setComment(post?.comments);
+  }, [post]);
 
   const likeOrDislikeHandler = async () => {
     try {
       const action = liked ? "dislike" : "like";
       const res = await axios.get(
-        `${import.meta.env.VITE_BACKEND_URL}/api/v1/post/${post?._id}/${action}`,
-        { withCredentials: true }
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/post/${
+          post?._id
+        }/${action}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          withCredentials: true,
+        }
       );
 
       if (res.data.success) {
@@ -122,7 +134,7 @@ export function ReviewCard({ post }) {
                     className="hover:text-purple-300 transition-colors"
                     to={`/profile/${post?.author?._id}`}
                   >
-                  {post?.author?.fullname}
+                    {post?.author?.fullname}
                   </Link>
                 </h3>
                 {user && user._id === post?.author?._id && (

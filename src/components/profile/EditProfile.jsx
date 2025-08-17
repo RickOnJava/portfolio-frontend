@@ -19,7 +19,7 @@ import { useImageUpload } from "../hooks/use-image-upload";
 
 const EditProfile = () => {
   const imageRef = useRef();
-  const { user } = useSelector((store) => store.auth);
+  const { user, token } = useSelector((store) => store.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -70,6 +70,7 @@ const EditProfile = () => {
         formData,
         {
           headers: {
+            Authorization: `Bearer ${token}`,
             "Content-Type": "multipart/form-data",
           },
           withCredentials: true,

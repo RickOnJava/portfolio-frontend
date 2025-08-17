@@ -15,7 +15,7 @@ const CommentDialog = ({ open, setOpen }) => {
   const [comment, setComment] = useState([]);
 
 
-  const { user } = useSelector((store) => store.auth);
+  const { user, token } = useSelector((store) => store.auth);
   
   const { selectedPost, posts } = useSelector((store) => store.post);
   
@@ -42,6 +42,7 @@ const CommentDialog = ({ open, setOpen }) => {
         { text },
         {
           headers: {
+            Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
           withCredentials: true,
