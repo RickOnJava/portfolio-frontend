@@ -143,7 +143,7 @@ const Signup = () => {
                 />
                 Email
               </label>
-              <label>
+              {/* <label>
                 <input
                   type="radio"
                   name="verificationMethod"
@@ -152,7 +152,7 @@ const Signup = () => {
                   required
                 />
                 Phone
-              </label>
+              </label> */}
             </div>
           </div>
         </div>
